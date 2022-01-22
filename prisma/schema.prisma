@@ -9,3 +9,20 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id       Int     @default(autoincrement()) @id
+  username String
+  password String
+  email    String  @unique
+  todos    Todo[]
+}
+
+model Todo {
+  id          Int     @default(autoincrement()) @id
+  title       String
+  description String
+  assignee    User   @relation(fields: [assigneeId], references: [id])
+  assigneeId  Int
+  complete    Boolean
+}

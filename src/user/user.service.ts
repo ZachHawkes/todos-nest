@@ -4,13 +4,13 @@ import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
 export class UserService {
-    constructor(private readonly prisma: PrismaService) {};
+  constructor(private readonly prisma: PrismaService) {}
 
-    public createUser(data: Prisma.UserCreateInput): Promise<User> {
-        return this.prisma.user.create({ data });
-    }
+  public createUser(data: Prisma.UserCreateInput): Promise<User> {
+    return this.prisma.user.create({ data });
+  }
 
-    public findUser(input: Prisma.UserWhereUniqueInput): Promise<User> {
-        return this.prisma.user.findUnique({ where: input});
-    }
+  public findUser(input: Prisma.UserWhereUniqueInput): Promise<User> {
+    return this.prisma.user.findUnique({ where: input });
+  }
 }
